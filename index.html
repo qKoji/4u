@@ -410,15 +410,58 @@
   }
   @media (max-width: 700px) {
     #musicWidget {
-      left: 50%;
+      left: 0;
+      right: 0;
       top: auto;
-      bottom: 24px;
-      transform: translateX(-50%) translateY(20px);
-      width: 152px;
+      bottom: 0;
+      transform: translateY(100%);
+      width: 100%;
+      max-width: none;
+      border-radius: 16px 16px 0 0;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      padding: 10px 16px;
+      padding-bottom: calc(10px + env(safe-area-inset-bottom));
+      box-sizing: border-box;
     }
     #musicWidget.visible {
-      transform: translateX(-50%) translateY(0);
+      transform: translateY(0);
     }
+    #musicWidget .music-note {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+    #musicWidget .music-text {
+      align-items: flex-start;
+      text-align: left;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    #musicWidget .player-controls {
+      flex-shrink: 0;
+    }
+    #musicWidget .ctrl-btn.play {
+      width: 34px;
+      height: 34px;
+    }
+    #musicWidget .volume-row {
+      width: 64px;
+      flex-shrink: 0;
+    }
+
+    /* reserve room at the bottom so the mini-player never covers the
+       card content once it slides up (envelope screen has no player yet) */
+    #askScreen, #yesScreen, #finalScreen {
+      padding-bottom: 88px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    #musicWidget .volume-row { display: none; }
   }
 
   /* ---------- Envelope gate ---------- */
